@@ -1,0 +1,14 @@
+LTspice 26.0.2 for MacOS
+Circuit: /Users/quanyuan/Documents/LTspice/8-BitAdder/8-bit.net
+Start Time: Mon Jun  8 13:56:20 2026
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 1.307 seconds.
+
+Files loaded:
+/Users/quanyuan/Documents/LTspice/8-BitAdder/8-bit.net
+
