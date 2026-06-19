@@ -1,4 +1,4 @@
-# CPU Project
+
 
 # 8-Bit CPU Project
 
@@ -141,11 +141,11 @@ An 8-to-1 multiplexer network selects the final ALU output. All operations are g
 │   ├── registers/
 │   └── cpu/
 │
-├── cad/
+├── cad/ (In Progress)
 │
-├── journals/
+├── journals/ (In Progress)
 │
-└── parts-list/
+└── parts-list/ (In Progress)
 ```
 
 ## Technologies Used
