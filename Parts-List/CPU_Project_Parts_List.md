@@ -10,7 +10,7 @@ This bill of materials covers the components required to build and test the tran
 |---|---|---:|---|---:|
 | Solderless breadboards | [BOJACK 3-Value Breadboard Kit](https://www.amazon.com/BOJACK-Values-Solderless-Breadboard-Flexible/dp/B08Y59P6D1) | 1 kit | Provides two 830-point and two 400-point breadboards for assembling the circuit | $9.99 |
 | Solid-core hookup wire | [TUOFENG 22 AWG Solid Wire Kit](https://www.amazon.com/dp/B07TX6BX47?th=1) | 1 kit | Custom-length breadboard wiring; six colors simplify organization and debugging | $15.99 |
-| NPN transistors | [BOJACK 2N3904 NPN Transistors, 200 Pack](https://www.amazon.com/BOJACK-2N3904-General-Purpose-Transistors/dp/B07T4ZJ76B) | 1 pack | Implements transistor-level RTL logic gates and the full-adder circuit | $9.99 |
+| NPN transistors | [BOJACK 2N3904 NPN Transistors, 200 Pack](https://www.amazon.com/BOJACK-2N3904-General-Purpose-Transistors/dp/B07T4ZJ76B) | 3 pack | Implements transistor-level RTL logic gates and the full-adder circuit | $9.99 |
 | Resistors | [BOJACK 1,000-Piece Resistor Assortment](https://www.amazon.com/BOJACK-Values-Resistor-Resistors-Assortment/dp/B08FHPKF9V) | 1 kit | Includes 10 kΩ, 4.7 kΩ, and 470 Ω values for transistor biasing, pull-ups, and LED current limiting | $9.99 |
 | LEDs | [DiCUNO 450-Piece 5 mm LED Assortment](https://www.amazon.com/DiCUNO-450pcs-Colors-Emitting-Assorted/dp/B073QMYKDM) | 1 kit | Red and blue LEDs indicate logic inputs and outputs | $11.99 |
 | Three-pin switches | [EGSCST 110-Piece SPDT Slide Switch Kit](https://www.amazon.com/EGSCST-Switches-Position-Miniature-Vertical/dp/B0FNK8B1YV) | 1 kit | Supplies selectable logic-high and logic-low inputs for A, B, and carry-in | $9.99 |
