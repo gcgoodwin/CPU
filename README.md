@@ -2,7 +2,7 @@
 
 # 8-Bit CPU Project
 
-Designing a complete 8-bit CPU from discrete MOSFET transistors and digital logic principles.
+Designing a complete 8-bit CPU from discrete NPN transistors and digital logic principles.
 
 ---
 
@@ -141,17 +141,21 @@ An 8-to-1 multiplexer network selects the final ALU output. All operations are g
 │   ├── registers/
 │   └── cpu/
 │
-├── cad/ (In Progress)
+├── cad/
+|   ├── 8-bit adder/
 │
-├── journals/ (In Progress)
-│
-└── parts-list/ (In Progress)
+├── journals/ 
+│   ├── Week 1-3 Journal/
+|
+└── parts-list/
+|   ├── Cart/Parts/
+|
 ```
 
 ## Technologies Used
 
 - LTspice
-- CMOS Logic Design
+- NPN Logic Design
 - Digital Logic Design
 - Computer Architecture Principles
 - GitHub
