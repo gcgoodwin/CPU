@@ -206,6 +206,5 @@ Beginning with the 8-bit adder/subtractor gives me a realistic first milestone w
 
 ## Author
 
-**Goodwin Chen**
-**Josh Roe**
+**Goodwin Chen**, **Josh Roe**
 Summer 2026
