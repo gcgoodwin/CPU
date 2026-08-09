@@ -25,6 +25,7 @@ The first physical build will be an 8-bit circuit that can add or subtract two b
 
 This phase will help me test the practical challenges of working with discrete NPN transistors, including signal reliability, fan-out, voltage levels, component layout, and troubleshooting a larger circuit.
 
+**Current status:** The physical 8-bit adder has not been constructed yet. I have completed the circuit design, simulation, Fritzing breadboard planning, and PCB/layout work needed before construction. This funding request is for the components I need to build and test the physical circuit.
 ### Future Phases: Complete 8-Bit CPU
 
 After the adder/subtractor is working reliably, I plan to expand the project into a complete 8-bit CPU by developing and connecting the remaining subsystems:
@@ -89,6 +90,19 @@ The memory interface will allow the CPU to fetch instructions, load data, and st
 ## First Build: 8-Bit Adder/Subtractor
 
 The first build is focused specifically on the arithmetic circuit that will later become part of the full ALU.
+### Hardware Design Progress
+
+Before purchasing the components for the physical build, I worked through the circuit at several levels so I could understand how the final adder would be assembled. The images below show the hardware designs I have completed so far.
+
+#### 8-Bit Full Adder/Subtractor
+
+![alt text](8-Bit-Add-Subtract.png)
+This is the gate level schematic of the 8-bit full-adder design that is formed from 8, 1-bit full adders. It accepts 8-Bit inputs A, B, and carry-in and produces 8-bit SUM and carry-out. 
+#### 8-Bit Breadboard Layout
+
+![alt text](FinalCPU_8bit_bb.png)
+
+This is the working breadboard implementation of the 8-bit ripple-carry adder using discrete NPN transistors. The design repeats the full-adder module eight times, with the carry-out of each bit connected to the carry-in of the next bit. The layout also includes the input switches, power connections, resistors, and output indicators needed for the physical build.
 
 ### Logic Gates
 
