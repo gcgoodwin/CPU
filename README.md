@@ -97,9 +97,7 @@ Before purchasing the components for the physical build, I worked through the ci
 #### 8-Bit Full Adder/Subtractor
 
 ![alt text](8-Bit-Add-Subtract.png)
-This is the gate level schematic of the 8-bit full-adder design that is formed from 8, 1-bit full adders. It accepts 8-Bit inputs A, B, and carry-in and produces 8-bit SUM and carry-out. The select input controls whether the circuit adds or subtracts. When select is 1, it inverts the B bits and sets the initial carry-in to 1, turning A+B into A+ 
-B
- +1, which is two’s-complement subtraction A−B. 
+This is the gate level schematic of the 8-bit full-adder design that is formed from 8, 1-bit full adders. It accepts 8-Bit inputs A, B, and carry-in and produces 8-bit SUM and carry-out. The select input controls whether the circuit adds or subtracts. When select is 1, it inverts the B bits and sets the initial carry-in to 1, turning A+B into $A + \overline{B} + 1$, which is two’s-complement subtraction A−B. 
 #### 8-Bit Breadboard Layout
 
 ![alt text](FinalCPU_8bit_bb.png)
