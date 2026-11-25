@@ -1,224 +1,99 @@
+# Building an 8-Bit CPU from Transistors
 
-# 8-Bit CPU Project
+I have used computers for most of my life, but for a long time the processor itself was basically a black box to me. I knew that code eventually became electrical signals, but I did not understand how a group of transistors could add numbers, remember data, or follow instructions. I started this project because I wanted to work through that entire path myself instead of only reading about it.
 
-Building an 8-bit CPU from discrete NPN transistors to understand what is really happening beneath the code.
+The long-term goal is still a complete 8-bit CPU. I originally tried to plan everything at once—the ALU, registers, program counter, control unit, clock, and memory interface—but I quickly realized that physically building all of that from discrete transistors would be a huge jump. I decided to make the first hardware milestone an **8-bit adder/subtractor**, since it is both manageable and something I can later reuse inside the ALU.
 
----
+## Where I am right now
 
-## Overview
+I started in LTspice, where I could build a gate, simulate it, and check its output before connecting it to anything else. From there, I combined gates into half adders and full adders and tested an 8-bit ripple-carry design. Simulation gave me a working plan, but transferring that plan onto a breadboard has been a completely different challenge.
 
-I have used computers for years, but I wanted to understand what actually happens inside a processor when it adds numbers, stores data, or executes an instruction. This project is my attempt to answer that question by building an 8-bit CPU from the transistor level upward.
+I now have a working **3-bit adder/subtractor** connected to an LED display I built on breadboards. The carry-out from each adder stage feeds the carry-in of the next stage. I enter two numbers in binary using switches, and the display shows the sum in addition mode or the difference in subtraction mode.
 
-The long-term goal is to create a complete processor that can perform arithmetic and logic operations, store values in registers, execute instructions, manage program flow, and communicate with memory. Instead of treating the CPU as one enormous circuit, I am breaking it into smaller systems that I can design, simulate, build, test, and improve one at a time.
+The display can also show patterns, words, and numbers. I can use it to try different LED patterns or as the output for a simple calculator.
 
-The first major build phase is an **8-bit adder/subtractor**. This circuit will form the arithmetic foundation of the future Arithmetic Logic Unit and will let me focus on reliable transistor-level logic, carry propagation, two's complement subtraction, wiring, and debugging before moving on to the rest of the CPU.
+The biggest difference from LTspice is that the real circuit does not tell me where I made a mistake. I have had to learn how the breadboard rows connect, check transistor orientation, test the input switches, and trace signals with a multimeter one node at a time. Even the output LEDs caused confusion.
 
----
+## Project images
 
-## Project Scope and Build Plan
-
-This project is designed as a series of connected stages rather than a single all-at-once build.
-
-### Phase 1: 8-Bit Adder/Subtractor
-
-The first physical build will be an 8-bit circuit that can add or subtract two binary numbers. It will be created from smaller logic blocks, including gates, half adders, and full adders.
-
-This phase will help me test the practical challenges of working with discrete NPN transistors, including signal reliability, fan-out, voltage levels, component layout, and troubleshooting a larger circuit.
-
-**Current status:** The physical 8-bit adder has not been constructed yet. I have completed the circuit design, simulation, Fritzing breadboard planning, and PCB/layout work needed before construction. This funding request is for the components I need to build and test the physical circuit.
-### Future Phases: Complete 8-Bit CPU
-
-After the adder/subtractor is working reliably, I plan to expand the project into a complete 8-bit CPU by developing and connecting the remaining subsystems:
-
-- Arithmetic Logic Unit
-- Register file
-- Program Counter
-- Instruction Register
-- Control Unit
-- Clock system
-- Memory interface
-
-Each subsystem will be developed and tested individually before being integrated into the final processor.
-
----
-
-## Planned CPU Architecture
-
-### Arithmetic Logic Unit (ALU)
-
-The Arithmetic Logic Unit will handle the processor's arithmetic and logical operations. The 8-bit adder/subtractor built during the first phase will eventually become one of the central parts of this unit.
-
-| Opcode | Operation |
-|----------|----------|
-| 000 | Addition |
-| 001 | Subtraction |
-| 010 | Bitwise AND |
-| 011 | Bitwise OR |
-| 100 | Bitwise XOR |
-| 101 | Bitwise NOT |
-| 110 | Shift Left |
-| 111 | Shift Right |
-
-The completed ALU is planned to accept two 8-bit operands and produce an 8-bit result, along with status information such as carry-out.
-
-### Register File
-
-The register file will provide fast temporary storage for values currently being used by the processor. It will allow data to be stored, modified, and transferred between different parts of the CPU without constantly accessing external memory.
-
-### Program Counter
-
-The Program Counter will store the address of the next instruction to be executed. It will normally advance after each instruction, but branch or jump instructions will be able to replace its value.
-
-### Instruction Register
-
-The Instruction Register will hold the instruction currently being executed so that the Control Unit can decode it and coordinate the correct operation.
-
-### Control Unit
-
-The Control Unit will act as the coordinator of the CPU. It will generate the signals needed to select ALU operations, move data between registers, access memory, and control the order in which instructions are executed.
-
-### Clock System
-
-A centralized clock will keep the processor's operations synchronized. Each clock cycle will move the CPU through the steps required to fetch, decode, and execute an instruction.
-
-### Memory Interface
-
-The memory interface will allow the CPU to fetch instructions, load data, and store results in an external memory system.
-
----
-
-## First Build: 8-Bit Adder/Subtractor
-
-The first build is focused specifically on the arithmetic circuit that will later become part of the full ALU.
-### Hardware Design Progress
-
-Before purchasing the components for the physical build, I worked through the circuit at several levels so I could understand how the final adder would be assembled. The images below show the hardware designs I have completed so far.
-
-#### 8-Bit Full Adder/Subtractor
+### LTspice design
 
 ![alt text](8-Bit-Add-Subtract.png)
-This is the gate level schematic of the 8-bit full-adder design that is formed from 8, 1-bit full adders. It accepts 8-Bit inputs A, B, and carry-in and produces 8-bit SUM and carry-out. The select input controls whether the circuit adds or subtracts. When select is 1, it inverts the B bits and sets the initial carry-in to 1, turning A+B into $A + \overline{B} + 1$, which is two’s-complement subtraction A−B. 
-#### 8-Bit Breadboard Layout
+
+
+### Breadboard CAD
 
 ![alt text](FinalCPU_8bit_bb.png)
 
-This is the working breadboard implementation of the 8-bit ripple-carry adder using discrete NPN transistors. The design repeats the full-adder module eight times, with the carry-out of each bit connected to the carry-in of the next bit. The layout also includes the input switches, power connections, resistors, and output indicators needed for the physical build.
+### 3-bit adder and LED display
 
-### Logic Gates
+![Breadboard wiring for the 3-bit adder and its connected LED display](images/3-bit-build/adder-and-display.jpg)
 
-The circuit will be built from fundamental logic gates, including:
+The adder chain and display wired together on breadboards.
 
-- AND
-- OR
-- XOR
-- NOT
+![Close-up of the illuminated blue LED display](images/3-bit-build/led-display.jpg)
 
-### Half Adders
+A closer view of the display with a different output lit up.
 
-A half adder adds two single binary bits and produces a sum bit and a carry bit. It is one of the simplest building blocks used to understand binary addition.
+### Early 1-bit prototype
 
-### Full Adders
+![Early 1-bit adder prototype on a breadboard](image.png)
 
-A full adder expands on the half adder by including a carry input from the previous bit. Each full adder accepts two operand bits and a carry-in, then produces a sum and a carry-out.
+## Debugging the 1-bit prototype
 
-### Ripple-Carry Adder
+During one test, I set `A = 1`, `B = 1`, and `Cin = 0`. I expected `SUM = 0` and `Cout = 1`, but the yellow SUM LED turned on while the green carry LED turned off. At first, I thought the full adder was producing the exact opposite of the correct answer.
 
-Eight full adders will be connected in sequence to create an 8-bit ripple-carry adder. The carry from each bit will feed into the next stage, allowing the circuit to add two complete 8-bit values.
+After measuring the output transistor, I found that the carry collector was at 5 V while its base and emitter were at 0 V. The carry signal was actually correct. The confusing part was how I had connected the LEDs: each LED runs from 5 V through a 450 Ω resistor to an NPN collector. When the collector is LOW, the transistor sinks current and the LED turns on. When the collector is HIGH, both sides of the LED are near 5 V, so it turns off.
 
-### Subtraction with Two's Complement
+That means my current indicators are **active-low**:
 
-The same circuit will also perform subtraction using two's complement. When subtraction mode is enabled, the second operand will be inverted and the initial carry-in will be set to 1. This allows the adder hardware to calculate both addition and subtraction without requiring a separate subtractor circuit.
+- LED on = output `0`
+- LED off = output `1`
 
-### Testing and Verification
+Once I interpreted the LEDs correctly, the results followed the full-adder truth table. I added a 10 kΩ pull-up resistor to the carry collector so that its HIGH output reached 5 V instead of floating around 2.7 V. I still need to decide whether to keep the indicators active-low or spend an extra transistor and resistor on each output to make LED-on mean 1. For now, I am leaning toward keeping them active-low because the collector voltage itself is correct.
 
-The circuit will first be tested through simulation and then built physically with discrete components. I plan to verify individual gates and adder stages before combining them into the complete 8-bit system. Documenting failures and design changes is an important part of the project because the debugging process is where much of the learning happens.
+This was a useful debugging lesson because the circuit was not broken in the way I first assumed. I had to stop judging the output only by whether an LED was lit and measure the actual voltage instead.
 
----
+## How addition and subtraction share one circuit
 
-## How the Completed CPU Will Execute an Instruction
+The finished 8-bit circuit will use eight full-adder stages connected in a ripple-carry arrangement. Each stage receives two data bits and the carry from the previous stage, then produces one result bit and a new carry.
 
-Once all of the planned subsystems are built and connected, an instruction cycle should follow this general process:
+For subtraction, the SUB input changes how operand B enters the adder. When `SUB = 1`, each B bit is inverted and the first carry-in is also set to 1. The adder therefore calculates:
 
-1. An instruction is fetched from memory.
-2. The Program Counter advances.
-3. The Instruction Register stores the instruction.
-4. The Control Unit decodes the instruction.
-5. Registers provide the required operands.
-6. The ALU performs the requested operation.
-7. The result is written back to a register or memory.
-8. The CPU begins the next instruction.
+`A + B̅ + 1 = A - B`
 
----
+I originally expected subtraction to require a separate circuit, so learning that the same chain of full adders can perform both operations was one of the ideas that made me want to build this physically.
 
-## Planned Features
+## Next steps
 
-- 8-bit processor architecture
-- Custom Arithmetic Logic Unit
-- 8-bit addition and subtraction
-- Bitwise logic operations
-- Shift operations
-- Register-based storage
-- Instruction decoding
-- Memory interface
-- Clock-driven execution
-- Modular subsystem design
-- Discrete NPN transistor implementation
-- LTspice simulation and verification
-- Physical circuit construction and testing
+My next goal is to extend the working 3-bit chain to eight bits. As I add stages, I plan to check carry propagation, verify addition and subtraction, and measure voltage levels between stages. The completed adder/subtractor will be the arithmetic starting point for the ALU.
 
----
+The later CPU stages are still plans, and I expect the design to change as I learn more from the physical build. Eventually, I want to add the remaining ALU operations, registers, a program counter, an instruction register, a control unit, a clock, and a memory interface.
 
-## Repository Structure
+## Planned ALU operations
 
-```text
-.
-├── README.md
-├── docs/
-│   ├── architecture/
-│   ├── schematics/
-│   └── screenshots/
-│
-├── ltspice/
-│   ├── logic_gates/
-│   ├── adders/
-│   ├── multiplexers/
-│   ├── registers/
-│   └── cpu/
-│
-├── cad/
-│   └── 8-bit-adder/
-│
-├── journals/
-│   └── Week-1-3-Journal/
-│
-└── parts-list/
-    └── Cart-Parts/
-```
+| Opcode | Operation |
+|:---:|---|
+| `000` | Addition |
+| `001` | Subtraction |
+| `010` | Bitwise AND |
+| `011` | Bitwise OR |
+| `100` | Bitwise XOR |
+| `101` | Bitwise NOT |
+| `110` | Shift left |
+| `111` | Shift right |
 
----
+## Repository contents
 
-## Technologies and Concepts
+- `LTSpice/` contains my simulations for gates, adders, registers, and other CPU circuits.
+- `CAD/` contains the breadboard layout for the adder/subtractor.
+- `Schematics/` contains circuit diagrams.
+- `Journals/` records what I worked on, what failed, and what I changed.
+- `Parts/` tracks the components and cost of the physical build.
 
-- LTspice
-- Discrete NPN transistor logic
-- Digital logic design
-- Binary arithmetic
-- Two's complement
-- Computer architecture
-- Circuit construction and debugging
-- GitHub
-
----
-
-## Why I Am Building This
-
-The purpose of this project is not only to end with a working CPU. I want to understand how a computer can grow from individual transistors into gates, adders, registers, control signals, and eventually a machine capable of executing instructions.
-
-Beginning with the 8-bit adder/subtractor gives me a realistic first milestone while still contributing directly to the larger CPU. By building each subsystem myself and documenting the problems I encounter, I hope to develop a much deeper understanding of both digital electronics and computer architecture than I could gain from studying diagrams alone.
-
----
+I am documenting the mistakes along with the finished circuits because being able to explain why something failed is part of understanding how it works. By the end of the project, I do not just want a processor that produces the right outputs. I want to know what every major section is doing and why it is connected the way it is.
 
 ## Author
 
-**Goodwin Chen**, **Josh Roe**
+**Goodwin Chen**  
 Summer 2026
